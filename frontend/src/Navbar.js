@@ -58,8 +58,8 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
 
                 {showAdminBoard && (
                     <li className="nav-item">
-                        <Link to={"/zarejestrowani"} className="nav-link">
-                            Zarejestrowani użytkownicy
+                        <Link to={"/zamowienia"} className="nav-link">
+                            Zamówienia
                         </Link>
                     </li>
                 )}

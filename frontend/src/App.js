@@ -17,6 +17,7 @@ import EventBus from "./common/EventBus";
 import Offers from "./components/Producenci";
 import Producenci from "./components/Producenci";
 import Klienci from "./components/Klienci";
+import Zamowienia from "./components/Zamowienia";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/producenci" element={<Producenci/>} />
           <Route path="/klienci" element={<Klienci/>} />
           <Route path="/zarejestrowani" element={<BoardAdmin/>} />
+          <Route path="/zamowienia" element={<Zamowienia/>} />
         </Routes>
       </div>
 

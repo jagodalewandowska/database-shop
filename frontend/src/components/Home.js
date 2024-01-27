@@ -26,7 +26,6 @@ const Produkty = () => {
             try {
                 const response = await axios.get("http://localhost:8082/api/categories", { headers: authHeader() });
                 setCategories(response.data);
-                console.log(response.data)
             } catch (error) {
                 console.error(`Error fetching categories: ${error}`);
             }
@@ -96,6 +95,7 @@ const Produkty = () => {
         <div className="container">
             <br></br>
             <h3>Katalog</h3>
+            <br></br>
 
             <div className="form-group">
                 <label htmlFor="categorySelect">Wybierz kategorię:</label>
