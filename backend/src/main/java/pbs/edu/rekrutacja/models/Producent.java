@@ -1,6 +1,7 @@
 package pbs.edu.rekrutacja.models;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.LexerInterpreter;
 
 @Entity
 @Table(name = "PRODUCENT")
@@ -8,24 +9,25 @@ public class Producent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProducenta;
+    @Column(name = "id_producenta")
+    private Integer id_producenta;
 
     private String nazwa;
 
-    public Producent(Long idProducenta, String nazwa) {
-        this.idProducenta = idProducenta;
+    public Producent(Integer idProducenta, String nazwa) {
+        this.id_producenta = idProducenta;
         this.nazwa = nazwa;
     }
 
     public Producent() {
     }
 
-    public Long getIdProducenta() {
-        return idProducenta;
+    public Integer getIdProducenta() {
+        return id_producenta;
     }
 
-    public void setIdProducenta(Long idProducenta) {
-        this.idProducenta = idProducenta;
+    public void setIdProducenta(Integer id_producenta) {
+        this.id_producenta = id_producenta;
     }
 
     public String getNazwa() {
