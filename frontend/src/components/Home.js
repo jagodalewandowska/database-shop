@@ -9,6 +9,8 @@ const Produkty = () => {
     const [producentName, setProducentName] = useState(null);
     const [categoryName, setCategoryName] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -20,7 +22,18 @@ const Produkty = () => {
             }
         };
 
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get("http://localhost:8082/api/categories", { headers: authHeader() });
+                setCategories(response.data);
+                console.log(response.data)
+            } catch (error) {
+                console.error(`Error fetching categories: ${error}`);
+            }
+        };
+
         fetchProducts();
+        fetchCategories();
     }, []);
 
     const fetchProducentName = async (id_producenta) => {
@@ -54,15 +67,59 @@ const Produkty = () => {
         setModalOpen(false);
     };
 
+    const findCategoryIdByName = (categoryName) => {
+        if (categoryName === "Wszystkie") {
+            return null;
+        }
+
+        const category = categories.find(category => category.nazwa === categoryName);
+        const foundId = category.id;
+        return foundId;
+    };
+
+
+    const handleCategoryChange = (event) => {
+        const selectedName = event.target.value;
+        const newSelectedId = findCategoryIdByName(selectedName);
+        console.log(newSelectedId)
+        setSelectedCategoryId(newSelectedId);
+    };
+
+    const filteredProducts = selectedCategoryId
+        ? products.filter((product) => {
+            return product.idKategorii === selectedCategoryId;
+        })
+        : products;
+
+
     return (
         <div className="container">
             <br></br>
             <h3>Katalog</h3>
 
-            {products.length === 0 && <p>Brak produktów.</p>}
+            <div className="form-group">
+                <label htmlFor="categorySelect">Wybierz kategorię:</label>
+                <select
+                    className="form-control"
+                    id="categorySelect"
+                    onChange={handleCategoryChange}
+                    defaultValue={selectedCategoryId === undefined ? "Wszystkie" : selectedCategoryId}
+                >
+                    <option value="Wszystkie">Wszystkie</option>
+                    {categories.map((category) => (
+                        <option key={category.idKategorii} value={category.idKategorii}>
+                            {category.nazwa}
+                        </option>
+                    ))}
+                </select>
+
+
+            </div>
+
+            {filteredProducts.length === 0 && <p>Brak produktów.</p>}
 
             <div className="row">
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                     <div key={product.id_prod} className="col-md-4 mb-4">
                         <div className="card">
                             <div className="card-body">
