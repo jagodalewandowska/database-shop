@@ -25,7 +25,17 @@ const Producenci = () => {
         setNewProducent({ nazwa: "" });
     }, [manageMode]);
 
+    const isProducentNameExists = (name) => {
+        return producents.some((producent) => producent.nazwa.toLowerCase() === name.toLowerCase());
+    };
+
     const handleAddProducent = () => {
+
+        if (isProducentNameExists(newProducent.nazwa)) {
+            alert("Nazwa producenta istnieje w bazie. Wybierz inną nazwę.");
+            return;
+        }
+
         axios.post("http://localhost:8082/api/producents", newProducent)
             .then((response) => {
                 setProducents([...producents, response.data]);
@@ -63,6 +73,10 @@ const Producenci = () => {
     };
 
     const handleSaveEdit = (producentId, newName) => {
+        if (isProducentNameExists(newName)) {
+            alert("Nazwa producenta istnieje w bazie. Wybierz inną nazwę.");
+            return;
+        }
         axios.put(`http://localhost:8082/api/producents/${producentId}`, { nazwa: newName }, { headers: authHeader() })
             .then(() => {
                 const updatedProducents = producents.map((producent) => {
