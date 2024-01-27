@@ -9,7 +9,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Navbar from "./Navbar";
@@ -17,6 +16,7 @@ import Navbar from "./Navbar";
 import EventBus from "./common/EventBus";
 import Offers from "./components/Producenci";
 import Producenci from "./components/Producenci";
+import Klienci from "./components/Klienci";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -64,10 +64,9 @@ const App = () => {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={<Profile/>} />
-          <Route path="/user" element={<BoardUser/>} />
           <Route path="/producenci" element={<Producenci/>} />
-          <Route path="/mod" element={<BoardModerator/>} />
-          <Route path="/admin" element={<BoardAdmin/>} />
+          <Route path="/klienci" element={<Klienci/>} />
+          <Route path="/zarejestrowani" element={<BoardAdmin/>} />
         </Routes>
       </div>
 

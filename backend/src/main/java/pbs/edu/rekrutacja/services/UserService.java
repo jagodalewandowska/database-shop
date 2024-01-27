@@ -68,7 +68,6 @@ public class UserService {
         existingUser.setUsername(newUser.getUsername());
         existingUser.setPhoneNumber(newUser.getPhoneNumber());
         existingUser.setPostalCode(newUser.getPostalCode());
-        existingUser.setExperience(newUser.getExperience());
 
         try {
             userRepository.save(existingUser);

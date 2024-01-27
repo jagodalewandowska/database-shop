@@ -88,11 +88,6 @@ const Profile = () => {
                                                 {userData.postalCode}
                                             </p>
                                             <p className="mb-2">
-                                                <strong>Doświadczenie:</strong>
-                                                <br></br>
-                                                {userData.experience}
-                                            </p>
-                                            <p className="mb-2">
                                                 <strong>Numer telefonu:</strong>
                                                 <br></br>
                                                 {userData.phoneNumber}

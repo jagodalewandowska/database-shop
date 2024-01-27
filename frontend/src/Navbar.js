@@ -43,18 +43,28 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                 {showAdminBoard && (
                     <li className="nav-item">
                         <Link to={"/producenci"} className="nav-link">
-                            Zarządzaj producentami
+                            Producenci
                         </Link>
                     </li>
                 )}
 
                 {showAdminBoard && (
                     <li className="nav-item">
-                        <Link to={"/koszyk"} className="nav-link">
-                            Koszyk
+                        <Link to={"/klienci"} className="nav-link">
+                            Klienci
                         </Link>
                     </li>
                 )}
+
+                {showAdminBoard && (
+                    <li className="nav-item">
+                        <Link to={"/zarejestrowani"} className="nav-link">
+                            Zarejestrowani użytkownicy
+                        </Link>
+                    </li>
+                )}
+
+
             </div>
 
             <div className="navbar-nav ml-auto">

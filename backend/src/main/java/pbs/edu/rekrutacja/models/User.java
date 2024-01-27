@@ -47,9 +47,6 @@ public class User {
   @Size(max = 10)
   private String postalCode;
 
-  @Size(max = 1000)
-  private String experience;
-
   @Size(max = 15)
   private String phoneNumber;
 
@@ -76,7 +73,7 @@ public class User {
   }
 
   public User(String username, String email, String password, String firstName, String lastName,
-              String address, String city, String postalCode, String experience, String phoneNumber, Set<Role> roles) {
+              String address, String city, String postalCode, String phoneNumber, Set<Role> roles) {
     this.username = username;
     this.email = email;
     this.password = password;
@@ -85,7 +82,6 @@ public class User {
     this.address = address;
     this.city = city;
     this.postalCode = postalCode;
-    this.experience = experience;
     this.phoneNumber = phoneNumber;
     this.roles = roles;
   }
@@ -168,14 +164,6 @@ public class User {
 
   public void setPostalCode(String postalCode) {
     this.postalCode = postalCode;
-  }
-
-  public String getExperience() {
-    return experience;
-  }
-
-  public void setExperience(String experience) {
-    this.experience = experience;
   }
 
   public String getPhoneNumber() {

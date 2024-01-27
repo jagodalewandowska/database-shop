@@ -59,7 +59,6 @@ public class UserController {
         existingUser.setAddress(newUser.getAddress());
         existingUser.setCity(newUser.getCity());
         existingUser.setPostalCode(newUser.getPostalCode());
-        existingUser.setExperience(newUser.getExperience());
         existingUser.setPhoneNumber(newUser.getPhoneNumber());
         Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)

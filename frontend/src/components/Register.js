@@ -14,7 +14,6 @@ const Register = () => {
     address: "",
     city: "",
     postalCode: "",
-    experience: "",
     phoneNumber: ""
   });
 
@@ -39,7 +38,6 @@ const Register = () => {
         address: "",
         city: "",
         postalCode: "",
-        experience: "",
         phoneNumber: "",
         roles: ""
       });
@@ -151,17 +149,6 @@ const Register = () => {
                   className="form-control"
                   name="postalCode"
                   value={registerUser.postalCode}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="experience">Doświadczenie</label>
-              <textarea
-                  className="form-control"
-                  name="experience"
-                  value={registerUser.experience}
                   onChange={handleRegisterInputChange}
                   required
               />
