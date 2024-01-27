@@ -15,8 +15,8 @@ import BoardAdmin from "./components/BoardAdmin";
 import Navbar from "./Navbar";
 
 import EventBus from "./common/EventBus";
-import FileUploadComponent from "./components/FileUploadComponent";
-import Offers from "./components/Offers";
+import Offers from "./components/Producenci";
+import Producenci from "./components/Producenci";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -65,10 +65,9 @@ const App = () => {
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/user" element={<BoardUser/>} />
-          <Route path="/offersManagement" element={<Offers/>} />
+          <Route path="/producenci" element={<Producenci/>} />
           <Route path="/mod" element={<BoardModerator/>} />
           <Route path="/admin" element={<BoardAdmin/>} />
-          <Route path="/fileUploadComponent" element={<FileUploadComponent/>} />
         </Routes>
       </div>
 

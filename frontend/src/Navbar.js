@@ -21,21 +21,13 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
     return (
         <nav className="navbar navbar-expand navbar-light bg-light">
             <Link to={"/"} className="navbar-brand">
-                Rekrutacja pracowników
+                Sklep
             </Link>
             <div className="navbar-nav mr-auto">
                 {showModeratorBoard && (
                     <li className="nav-item">
                         <Link to={"/mod"} className="nav-link">
                             Panel moderatora
-                        </Link>
-                    </li>
-                )}
-
-                {showAdminBoard && (
-                    <li className="nav-item">
-                        <Link to={"/admin"} className="nav-link">
-                            Zarządzaj kandydatami
                         </Link>
                     </li>
                 )}
@@ -50,8 +42,16 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
 
                 {showAdminBoard && (
                     <li className="nav-item">
-                        <Link to={"/offersManagement"} className="nav-link">
-                            Zarządzaj ofertami pracy
+                        <Link to={"/producenci"} className="nav-link">
+                            Zarządzaj producentami
+                        </Link>
+                    </li>
+                )}
+
+                {showAdminBoard && (
+                    <li className="nav-item">
+                        <Link to={"/koszyk"} className="nav-link">
+                            Koszyk
                         </Link>
                     </li>
                 )}
@@ -78,9 +78,6 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                             <div className="dropdown-menu">
                                 <Link to={"/profile"} className="nav-link">
                                     Profile
-                                </Link>
-                                <Link to={"/fileUploadComponent"} className="nav-link">
-                                    Moje pliki
                                 </Link>
                                 <a href="/login" className="nav-link" onClick={logOut}>
                                     Wyloguj się
