@@ -1,19 +1,16 @@
 package pbs.edu.rekrutacja.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pbs.edu.rekrutacja.models.ERole;
 import pbs.edu.rekrutacja.models.Role;
 import pbs.edu.rekrutacja.models.User;
 import pbs.edu.rekrutacja.repository.RoleRepository;
+import pbs.edu.rekrutacja.repository.UserRepository;
 import pbs.edu.rekrutacja.services.UserService;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import static pbs.edu.rekrutacja.models.ERole.ROLE_USER;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -24,9 +21,11 @@ public class UserController {
     private UserService userService;
 
     private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
 
-    public UserController(RoleRepository roleRepository) {
+    public UserController(RoleRepository roleRepository, UserRepository userRepository) {
         this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping
@@ -73,4 +72,5 @@ public class UserController {
     public void deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
     }
+
 }
