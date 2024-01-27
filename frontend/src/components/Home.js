@@ -7,6 +7,7 @@ const Produkty = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [producentName, setProducentName] = useState(null);
+    const [categoryName, setCategoryName] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
@@ -31,9 +32,19 @@ const Produkty = () => {
         }
     };
 
+    const fetchCategoryName = async (id_kategorii) => {
+        try {
+            const response = await axios.get(`http://localhost:8082/api/categories/${id_kategorii}`, { headers: authHeader() });
+            setCategoryName(response.data.nazwa);
+        } catch (error) {
+            console.error(`Error fetching producer name: ${error}`);
+        }
+    };
+
     const openModal = async (product) => {
         setSelectedProduct(product);
         await fetchProducentName(product.idProducenta);
+        await fetchCategoryName(product.idKategorii);
         setModalOpen(true);
     };
 
@@ -48,7 +59,7 @@ const Produkty = () => {
             <br></br>
             <h3>Katalog</h3>
 
-            {products.length === 0 && <p>No products available.</p>}
+            {products.length === 0 && <p>Brak produktów.</p>}
 
             <div className="row">
                 {products.map((product) => (
@@ -99,6 +110,10 @@ const Produkty = () => {
                             <tr>
                                 <td>Nazwa producenta</td>
                                 <td>{producentName}</td>
+                            </tr>
+                            <tr>
+                                <td>Kategoria</td>
+                                <td>{categoryName}</td>
                             </tr>
                             <tr>
                                 <td>Cena brutto</td>
