@@ -10,11 +10,7 @@ const Register = () => {
     email: "",
     password: "",
     firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    postalCode: "",
-    phoneNumber: ""
+    lastName: ""
   });
 
   const [successMessage, setSuccessMessage] = useState("");
@@ -35,10 +31,6 @@ const Register = () => {
         password: "",
         firstName: "",
         lastName: "",
-        address: "",
-        city: "",
-        postalCode: "",
-        phoneNumber: "",
         roles: ""
       });
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -57,6 +49,19 @@ const Register = () => {
                 {successMessage}
               </div>
           )}
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+                type="email"
+                className="form-control"
+                name="email"
+                value={registerUser.email}
+                onChange={handleRegisterInputChange}
+                required
+            />
+          </div>
+
           <form onSubmit={handleRegister}>
             <div className="form-group">
               <label htmlFor="username">Nazwa użytkownika</label>
@@ -65,18 +70,6 @@ const Register = () => {
                   className="form-control"
                   name="username"
                   value={registerUser.username}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  value={registerUser.email}
                   onChange={handleRegisterInputChange}
                   required
               />
@@ -113,54 +106,6 @@ const Register = () => {
                   className="form-control"
                   name="lastName"
                   value={registerUser.lastName}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="address">Adres</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  name="address"
-                  value={registerUser.address}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="city">Miasto</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  name="city"
-                  value={registerUser.city}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="postalCode">Kod pocztowy</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  name="postalCode"
-                  value={registerUser.postalCode}
-                  onChange={handleRegisterInputChange}
-                  required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phoneNumber">Numer telefonu</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  name="phoneNumber"
-                  value={registerUser.phoneNumber}
                   onChange={handleRegisterInputChange}
                   required
               />

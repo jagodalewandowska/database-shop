@@ -33,9 +33,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{userId}")
-    public User getUserById(@PathVariable Long userId) {
-        return userService.getUserById(userId);
+    @GetMapping("/{id_klienta}")
+    public User getUserById(@PathVariable Long id_klienta) {
+        return userService.getUserById(id_klienta);
     }
 
     @PostMapping
@@ -48,29 +48,25 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @PutMapping("/{userId}")
-    public User updateUser(@PathVariable Long userId, @RequestBody User newUser) {
-        User existingUser = userService.getUserById(userId);
+    @PutMapping("/{id_klienta}")
+    public User updateUser(@PathVariable Long id_klienta, @RequestBody User newUser) {
+        User existingUser = userService.getUserById(id_klienta);
         existingUser.setUsername(newUser.getUsername());
         existingUser.setEmail(newUser.getEmail());
         existingUser.setFirstName(newUser.getFirstName());
         existingUser.setLastName(newUser.getLastName());
-        existingUser.setAddress(newUser.getAddress());
-        existingUser.setCity(newUser.getCity());
-        existingUser.setPostalCode(newUser.getPostalCode());
-        existingUser.setPhoneNumber(newUser.getPhoneNumber());
         Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         roles.add(userRole);
         existingUser.setRoles(roles);
-        return userService.updateUser(userId, existingUser);
+        return userService.updateUser(id_klienta, existingUser);
     }
 
 
-    @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable Long userId) {
-        userService.deleteUser(userId);
+    @DeleteMapping("/{id_klienta}")
+    public void deleteUser(@PathVariable Long id_klienta) {
+        userService.deleteUser(id_klienta);
     }
 
 }

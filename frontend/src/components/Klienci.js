@@ -18,11 +18,7 @@ const BoardAdmin = () => {
         email: "",
         password: "",
         firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        postalCode: "",
-        phoneNumber: ""
+        lastName: ""
     });
     const [editingUser, setEditingUser] = useState(null);
     const [sortField, setSortField] = useState("lastName");
@@ -60,11 +56,7 @@ const BoardAdmin = () => {
             email: "",
             password: "",
             firstName: "",
-            lastName: "",
-            address: "",
-            city: "",
-            postalCode: "",
-            phoneNumber: "",
+            lastName: ""
         });
     };
 
@@ -134,18 +126,6 @@ const BoardAdmin = () => {
                             <th scope="col" onClick={() => handleSort("email")}>
                                 Adres e-mail {sortField === "email" && (sortOrder === "asc" ? "▲" : "▼")}
                             </th>
-                            <th scope="col" onClick={() => handleSort("address")}>
-                                Adres {sortField === "address" && (sortOrder === "asc" ? "▲" : "▼")}
-                            </th>
-                            <th scope="col" onClick={() => handleSort("city")}>
-                                Miasto {sortField === "city" && (sortOrder === "asc" ? "▲" : "▼")}
-                            </th>
-                            <th scope="col" onClick={() => handleSort("postalCode")}>
-                                Kod pocztowy {sortField === "postalCode" && (sortOrder === "asc" ? "▲" : "▼")}
-                            </th>
-                            <th scope="col" onClick={() => handleSort("phoneNumber")}>
-                                Numer telefonu {sortField === "phoneNumber" && (sortOrder === "asc" ? "▲" : "▼")}
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -156,10 +136,6 @@ const BoardAdmin = () => {
                                 <td>{user.lastName}</td>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
-                                <td>{user.address}</td>
-                                <td>{user.city}</td>
-                                <td>{user.postalCode}</td>
-                                <td>{user.phoneNumber}</td>
                             </tr>
                         ))}
                         </tbody>

@@ -107,7 +107,7 @@ class UserControllerTest {
 
     @Test
     void deleteUser_shouldReturnNoContent() throws Exception {
-        mockMvc.perform(delete("/api/users/{userId}", 1))
+        mockMvc.perform(delete("/api/users/{id_klienta}", 1))
                 .andExpect(status().isOk());
 
         verify(userService, times(1)).deleteUser(1L);

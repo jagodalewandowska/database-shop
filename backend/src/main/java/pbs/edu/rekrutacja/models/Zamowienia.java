@@ -1,6 +1,7 @@
 package pbs.edu.rekrutacja.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,6 +27,7 @@ public class Zamowienia {
     @Column(name = "sposob_oplaty", nullable = false)
     private String sposobOplaty;
 
+    @Size(max = 30)
     @Column(name = "id_faktury")
     private String idFaktury;
 

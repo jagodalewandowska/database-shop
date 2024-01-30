@@ -17,10 +17,10 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const userId = JSON.parse(localStorage.getItem("user")).id;
+                const id_klienta = JSON.parse(localStorage.getItem("user")).id;
 
-                if (userId) {
-                    const response = await axios.get(`http://localhost:8082/api/users/${userId}`);
+                if (id_klienta) {
+                    const response = await axios.get(`http://localhost:8082/api/users/${id_klienta}`);
                     setUserData(response.data);
                 }
             } catch (error) {
@@ -71,26 +71,6 @@ const Profile = () => {
                                                 <strong>Nazwa użytkownika:</strong>
                                                 <br></br>
                                                 {userData.username}
-                                            </p>
-                                            <p className="mb-2">
-                                                <strong>Adres:</strong>
-                                                <br></br>
-                                                {userData.address}
-                                            </p>
-                                            <p className="mb-2">
-                                                <strong>Miasto:</strong>
-                                                <br></br>
-                                                {userData.city}
-                                            </p>
-                                            <p className="mb-2">
-                                                <strong>Kod pocztowy:</strong>
-                                                <br></br>
-                                                {userData.postalCode}
-                                            </p>
-                                            <p className="mb-2">
-                                                <strong>Numer telefonu:</strong>
-                                                <br></br>
-                                                {userData.phoneNumber}
                                             </p>
                                             <p className="mb-2">
                                                 <strong>Nadane role:</strong>

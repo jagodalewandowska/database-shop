@@ -29,8 +29,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId)
+    public User getUserById(Long id_klienta) {
+        return userRepository.findById(id_klienta)
                 .orElseThrow(() -> new NoSuchElementException("User not found"));
     }
 
@@ -54,8 +54,8 @@ public class UserService {
     }
 
 
-    public User updateUser(Long userId, User newUser) {
-        User existingUser = getUserById(userId);
+    public User updateUser(Long id_klienta, User newUser) {
+        User existingUser = getUserById(id_klienta);
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(newUser.getPassword());
@@ -63,11 +63,6 @@ public class UserService {
 
         existingUser.setLastName(newUser.getLastName().trim());
         existingUser.setFirstName(newUser.getFirstName().trim());
-        existingUser.setCity(newUser.getCity());
-        existingUser.setAddress(newUser.getAddress());
-        existingUser.setUsername(newUser.getUsername());
-        existingUser.setPhoneNumber(newUser.getPhoneNumber());
-        existingUser.setPostalCode(newUser.getPostalCode());
 
         try {
             userRepository.save(existingUser);
@@ -77,8 +72,8 @@ public class UserService {
         return existingUser;
     }
 
-    public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+    public void deleteUser(Long id_klienta) {
+        userRepository.deleteById(id_klienta);
     }
 }
 

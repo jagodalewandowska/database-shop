@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "users", 
+@Table(name = "klienci",
     uniqueConstraints = { 
       @UniqueConstraint(columnNames = "username"),
       @UniqueConstraint(columnNames = "email") 
@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long user_id;
+  private Integer id_klienta;
 
   @NotBlank
   @Size(max = 20)
@@ -29,30 +29,18 @@ public class User {
   private String email;
 
   @NotBlank
-  @Size(max = 120)
+  @Size(max = 64)
   private String password;
 
-  @Column(name = "first_name")
+  @Column(name = "imie")
   private String firstName;
 
-  @Column(name = "last_name")
+  @Column(name = "nazwisko")
   private String lastName;
-
-  @Size(max = 255)
-  private String address;
-
-  @Size(max = 50)
-  private String city;
-
-  @Size(max = 10)
-  private String postalCode;
-
-  @Size(max = 15)
-  private String phoneNumber;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
+        joinColumns = @JoinColumn(name = "id_klienta"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
@@ -73,25 +61,21 @@ public class User {
   }
 
   public User(String username, String email, String password, String firstName, String lastName,
-              String address, String city, String postalCode, String phoneNumber, Set<Role> roles) {
+              Set<Role> roles) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.address = address;
-    this.city = city;
-    this.postalCode = postalCode;
-    this.phoneNumber = phoneNumber;
     this.roles = roles;
   }
 
-  public Long getUser_id() {
-    return user_id;
+  public Integer getId_klienta() {
+    return id_klienta;
   }
 
-  public void setUser_id(Long user_id) {
-    this.user_id = user_id;
+  public void setId_klienta(Integer id_klienta) {
+    this.id_klienta = id_klienta;
   }
 
   public String getUsername() {
@@ -140,37 +124,5 @@ public class User {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public String getPostalCode() {
-    return postalCode;
-  }
-
-  public void setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
   }
 }
