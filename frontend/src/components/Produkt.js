@@ -41,8 +41,8 @@ const Produkty = () => {
         });
     }, [manageMode]);
 
-    const isProduktNameExists = (name) => {
-        return produkty.some((produkt) => produkt.nazwa.toLowerCase() === name.toLowerCase());
+    const isProduktNameExists = (id, name) => {
+        return produkty.some((produkt) => produkt.nazwa.toLowerCase() === name.toLowerCase() && produkt.idProd !== id);
     };
 
     const handleAddProdukt = () => {
@@ -50,7 +50,7 @@ const Produkty = () => {
     };
 
     const handleSaveProdukt = () => {
-        if (isProduktNameExists(newProdukt.nazwa)) {
+        if (isProduktNameExists(0, newProdukt.nazwa)) {
             alert("Nazwa produktu istnieje w bazie. Wybierz inną nazwę.");
             return;
         }
@@ -132,7 +132,7 @@ const Produkty = () => {
     };
 
     const handleSaveEdit = (produktId, newValues) => {
-        if (isProduktNameExists(newValues.nazwa)) {
+        if (isProduktNameExists(produktId, newValues.nazwa)) {
             alert("Nazwa produktu istnieje w bazie. Wybierz inną nazwę.");
             return;
         }
@@ -240,13 +240,69 @@ const Produkty = () => {
                                 <div>
                                     {editMode === produkt.idProd ? (
                                         <div>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                value={newProdukt.nazwa}
-                                                onChange={(e) => setNewProdukt({ ...newProdukt, nazwa: e.target.value })}
-                                            />
-                                            {/* ... (reszta pól do edycji) */}
+                                            <div className="form-group">
+                                                <label>Nazwa produktu:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.nazwa}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, nazwa: e.target.value })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>ID Producenta:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.idProducenta || ""}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, idProducenta: parseInt(e.target.value) || null })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>ID Kategorii:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.idKategorii || ""}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, idKategorii: parseInt(e.target.value) || null })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Cena Brutto:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.cenaBrutto}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, cenaBrutto: e.target.value })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Cena Netto:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.cenaNetto}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, cenaNetto: e.target.value })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>VAT:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.vat}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, vat: e.target.value })}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Okres Gwarancji:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={newProdukt.okresGwarancji}
+                                                    onChange={(e) => setNewProdukt({ ...newProdukt, okresGwarancji: e.target.value })}
+                                                />
+                                            </div>
                                             <button
                                                 className="btn btn-info mt-2"
                                                 onClick={() => handleSaveEdit(produkt.idProd, newProdukt)}

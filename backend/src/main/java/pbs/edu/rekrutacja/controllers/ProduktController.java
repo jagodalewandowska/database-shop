@@ -44,11 +44,18 @@ public class ProduktController {
         return new ResponseEntity<>(savedProdukt, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{producent_id}")
-    public Produkt updateProducent(@PathVariable Long produkt_id, @RequestBody Produkt produkt) {
-        Produkt existingProdukt = produktService.getProduktById(produkt_id);
-        return produktService.updateProdukt(produkt_id, produkt);
+    @PutMapping("/{id}")
+    public ResponseEntity<Produkt> updateProdukt(@PathVariable Long id, @RequestBody Produkt produkt) {
+        Produkt existingProdukt = produktService.getProduktById(id);
+
+        if (existingProdukt != null) {
+            Produkt updatedProdukt = produktService.updateProdukt(id, produkt);
+            return new ResponseEntity<>(updatedProdukt, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProdukt(@PathVariable Long id) {
