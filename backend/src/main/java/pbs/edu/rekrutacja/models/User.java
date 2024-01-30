@@ -33,9 +33,11 @@ public class User {
   private String password;
 
   @Column(name = "imie")
+  @Size(max = 20)
   private String firstName;
 
   @Column(name = "nazwisko")
+  @Size(max = 30)
   private String lastName;
 
   @ManyToMany(fetch = FetchType.LAZY)
