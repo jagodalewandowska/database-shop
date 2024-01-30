@@ -19,6 +19,7 @@ import Producenci from "./components/Producenci";
 import Klienci from "./components/Klienci";
 import Zamowienia from "./components/Zamowienia";
 import Koszyk from "./components/Koszyk";
+import Produkt from "./components/Produkt";
 
 
 const App = () => {
@@ -72,6 +73,7 @@ const App = () => {
           <Route path="/zarejestrowani" element={<BoardAdmin/>} />
           <Route path="/zamowienia" element={<Zamowienia/>} />
           <Route path="/koszyk" element={<Koszyk/>} />
+          <Route path="/produkt" element={<Produkt/>} />
         </Routes>
       </div>
 

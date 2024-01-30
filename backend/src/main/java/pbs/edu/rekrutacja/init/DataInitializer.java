@@ -1,7 +1,12 @@
 package pbs.edu.rekrutacja.init;
 
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pbs.edu.rekrutacja.models.ERole;
@@ -10,6 +15,7 @@ import pbs.edu.rekrutacja.models.User;
 import pbs.edu.rekrutacja.repository.RoleRepository;
 import pbs.edu.rekrutacja.repository.UserRepository;
 
+import javax.sql.DataSource;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,4 +68,5 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("Administrator added: " + adminUsername);
         }
     }
+
 }

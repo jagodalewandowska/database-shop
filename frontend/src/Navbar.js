@@ -32,14 +32,6 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                     </li>
                 )}
 
-                {/*{currentUser && (*/}
-                {/*    <li className="nav-item">*/}
-                {/*        <Link to={"/user"} className="nav-link">*/}
-                {/*            Panel użytkownika*/}
-                {/*        </Link>*/}
-                {/*    </li>*/}
-                {/*)}*/}
-
                 {showAdminBoard && (
                     <li className="nav-item">
                         <Link to={"/producenci"} className="nav-link">
@@ -47,6 +39,16 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                         </Link>
                     </li>
                 )}
+
+
+                {showAdminBoard && (
+                    <li className="nav-item">
+                        <Link to={"/zamowienia"} className="nav-link">
+                            Zarządzaj produktami
+                        </Link>
+                    </li>
+                )}
+
 
                 {showAdminBoard && (
                     <li className="nav-item">
