@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pbs.edu.rekrutacja.models.Producent;
 import pbs.edu.rekrutacja.models.Produkt;
 import pbs.edu.rekrutacja.services.ProduktService;
 
@@ -41,6 +42,12 @@ public class ProduktController {
     public ResponseEntity<Produkt> saveProdukt(@RequestBody Produkt produkt) {
         Produkt savedProdukt = produktService.saveProdukt(produkt);
         return new ResponseEntity<>(savedProdukt, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{producent_id}")
+    public Produkt updateProducent(@PathVariable Long produkt_id, @RequestBody Produkt produkt) {
+        Produkt existingProdukt = produktService.getProduktById(produkt_id);
+        return produktService.updateProdukt(produkt_id, produkt);
     }
 
     @DeleteMapping("/{id}")
