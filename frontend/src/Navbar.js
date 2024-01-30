@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import cart from './components/img/cart1.png';
 
 const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,10 +64,18 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                     </li>
                 )}
 
+                {currentUser && (
+                    <div className="nav-item">
+                        <Link to={"/koszyk"} className="nav-link">
+                            Koszyk
+                        </Link>
+                    </div>
+                )}
 
             </div>
 
             <div className="navbar-nav ml-auto">
+
                 {currentUser ? (
                     <div
                         className="dropdown"
@@ -87,7 +95,7 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                         {isDropdownVisible && (
                             <div className="dropdown-menu">
                                 <Link to={"/profile"} className="nav-link">
-                                    Profile
+                                    Profil
                                 </Link>
                                 <a href="/login" className="nav-link" onClick={logOut}>
                                     Wyloguj się
@@ -110,6 +118,8 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
                         </li>
                     </div>
                 )}
+
+
             </div>
         </nav>
     );

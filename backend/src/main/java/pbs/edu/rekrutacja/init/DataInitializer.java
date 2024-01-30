@@ -52,10 +52,12 @@ public class DataInitializer implements CommandLineRunner {
         String adminUsername = "admin";
         String adminEmail = "administrator@gmail.com";
         String adminPassword = "admin123";
+        String adminName = "Administrator";
+        String adminSurname = "Administrator";
         if (!userRepository.existsByUsername(adminUsername)) {
             Set<Role> roles = new HashSet<>();
             roles.add(roleRepository.findByName(ERole.ROLE_ADMIN).orElseThrow());
-            User admin = new User(adminUsername, adminEmail, passwordEncoder.encode(adminPassword), roles);
+            User admin = new User(adminUsername, adminEmail, passwordEncoder.encode(adminPassword), adminName, adminSurname, roles);
             userRepository.save(admin);
             System.out.println("Administrator added: " + adminUsername);
         }

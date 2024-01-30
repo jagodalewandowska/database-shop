@@ -18,6 +18,8 @@ import Offers from "./components/Producenci";
 import Producenci from "./components/Producenci";
 import Klienci from "./components/Klienci";
 import Zamowienia from "./components/Zamowienia";
+import Koszyk from "./components/Koszyk";
+
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -69,6 +71,7 @@ const App = () => {
           <Route path="/klienci" element={<Klienci/>} />
           <Route path="/zarejestrowani" element={<BoardAdmin/>} />
           <Route path="/zamowienia" element={<Zamowienia/>} />
+          <Route path="/koszyk" element={<Koszyk/>} />
         </Routes>
       </div>
 
