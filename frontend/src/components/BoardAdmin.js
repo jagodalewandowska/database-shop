@@ -73,7 +73,6 @@ const BoardAdmin = () => {
       const response = await axios.get("http://localhost:8082/api/users", { headers: authHeader() });
       const filteredUsers = response.data.filter(user => user.username.toLowerCase() !== 'admin');
       setUsers(filteredUsers);
-      console.log(filteredUsers);
     } catch (error) {
       console.error(`Error fetching users: ${error}`);
     }

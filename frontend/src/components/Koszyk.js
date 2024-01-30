@@ -14,7 +14,10 @@ const Koszyk = () => {
         axios
             .get("http://localhost:8082/api/koszyk/all", { headers: authHeader() })
             .then((response) => {
-                setKoszykItems(response.data);
+                const storage = JSON.parse(localStorage.getItem("user"));
+                const currentUserId = storage.id;
+                const filteredItems = filterKoszykItemsByUserId(response.data, currentUserId);
+                setKoszykItems(filteredItems);
             })
             .catch((error) => {
                 console.error("Error fetching koszyk items:", error);
@@ -41,6 +44,10 @@ const Koszyk = () => {
         fetchProducts();
         fetchCategories();
     }, []);
+
+    const filterKoszykItemsByUserId = (items, userId) => {
+        return items.filter(item => item.idKlienta === userId);
+    };
 
     const getProductNameById = (idProd) => {
         const product = products.find(product => product.idProd=== idProd);

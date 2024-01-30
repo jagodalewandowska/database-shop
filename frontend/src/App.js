@@ -4,17 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
+import EventBus from "./common/EventBus";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Navbar from "./Navbar";
-
-import EventBus from "./common/EventBus";
-import Offers from "./components/Producenci";
 import Producenci from "./components/Producenci";
 import Klienci from "./components/Klienci";
 import Zamowienia from "./components/Zamowienia";

@@ -80,7 +80,6 @@ const Produkty = () => {
     const handleCategoryChange = (event) => {
         const selectedName = event.target.value;
         const newSelectedId = findCategoryIdByName(selectedName);
-        console.log(newSelectedId)
         setSelectedCategoryId(newSelectedId);
     };
 
