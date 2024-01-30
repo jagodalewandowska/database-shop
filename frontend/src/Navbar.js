@@ -43,7 +43,7 @@ const Navbar = ({ currentUser, logOut, showModeratorBoard, showAdminBoard }) => 
 
                 {showAdminBoard && (
                     <li className="nav-item">
-                        <Link to={"/zamowienia"} className="nav-link">
+                        <Link to={"/produkt"} className="nav-link">
                             Zarządzaj produktami
                         </Link>
                     </li>
